@@ -1,15 +1,13 @@
 import 'dart:ui';
 
-import 'package:desktop_window/desktop_window.dart';
 import 'package:flutter/material.dart';
 import 'package:home_ui/components/Background.dart';
-import 'package:home_ui/components/SquareWidget.dart';
+import 'package:home_ui/components/iWidget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 
 void main() async {
   runApp(const MyApp());
-  await DesktopWindow.toggleFullScreen();
 }
 
 class MyApp extends StatelessWidget {
@@ -54,27 +52,27 @@ class _MyHomePageState extends State<MyHomePage> {
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
               mainAxisCellCount: 2,
-              child: SquareWidget(),
+              child: iWidget(),
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 2,
               mainAxisCellCount: 1,
-              child: SquareWidget(),
+              child: iWidget(),
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 1,
               mainAxisCellCount: 1,
-              child: SquareWidget(),
+              child: iWidget(),
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 1,
               mainAxisCellCount: 1,
-              child: SquareWidget(),
+              child: iWidget(),
             ),
             StaggeredGridTile.count(
               crossAxisCellCount: 4,
               mainAxisCellCount: 2,
-              child: SquareWidget(),
+              child: iWidget(),
             ),
           ],
         )

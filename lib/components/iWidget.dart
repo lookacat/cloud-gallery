@@ -1,9 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-class SquareWidget extends StatelessWidget {
-  const SquareWidget({
+class iWidget extends StatelessWidget {
+  const iWidget({
     Key? key,
   }) : super(key: key);
 
@@ -59,15 +60,23 @@ class SquareWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: const <Widget>[
-          Text(
-            'sometext',
-            style: TextStyle(
-              fontFamily: 'SanFrancisco',
-              fontSize: 30,
-              color: Colors.white
-            )
+      padding: const EdgeInsets.all(27),
+      child: StaggeredGrid.count(
+        crossAxisCount: 4,
+        mainAxisSpacing: 20,
+        crossAxisSpacing: 20,
+        children: const [
+          StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 2,
+            child: Text(
+              'Wendelstein',
+              style: TextStyle(
+                fontFamily: 'SanFrancisco',
+                fontSize: 30,
+                color: Colors.white
+              )
+            ),
           ),
         ],
       ),
