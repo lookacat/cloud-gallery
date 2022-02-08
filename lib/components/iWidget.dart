@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_html/shims/dart_ui_real.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
@@ -57,75 +59,42 @@ class iWidget extends StatelessWidget {
     final _random = Random();
     return list[_random.nextInt(list.length)];
   }
-  Text test() {
-    return const Text(
-      'Wendelstein',
-      style: TextStyle(
-        fontFamily: 'SanFrancisco',
-        fontSize: 30,
-        color: Colors.white,
-        
-        backgroundColor: Color.fromARGB(0, 56, 45, 45),
-      )
-    );
-  }
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(27),
-      decoration: random(),
-      child: ResponsiveGridRow(
-        children: [
-          ResponsiveGridCol(
-            lg: 12,
-            child: Container(
-              height: 50,
-              alignment: const Alignment(0, 0),
-              color: Colors.purple,
-              child: const Text("lg : 12"),
-            ),
+      decoration: color1(),
+      child: Html(
+        data: """
+          <a class="h1 text">Montag</a>
+          <p><a class="h2 text">24</a></p>
+          <br>
+          <br>
+          <br>
+          <a class="h3 text">Heute keine Ereignisse mehr</a>
+        """,
+        style: {
+          ".text": Style(
+            fontFamily: 'SanFrancisco',
+            fontWeight: FontWeight.w200,
+            padding: EdgeInsets.all(0),
+            textDecoration: TextDecoration.none,
+            textTransform: TextTransform.uppercase
           ),
-          ResponsiveGridCol(
-            xs: 6,
-            md: 3,
-            child: Container(
-              height: 50,
-              alignment: const Alignment(0, 0),
-              color: Colors.green,
-              child: const Text("xs : 6 \r\nmd : 3"),
-            ),
+          ".h1": Style(
+            color: Color(0xffe9564f),
+            fontWeight: FontWeight.bold,
+            fontSize: FontSize(32),
+          ), 
+          ".h2": Style(
+            color: Colors.white,
+            fontSize: FontSize(90)
           ),
-          ResponsiveGridCol(
-            xs: 6,
-            md: 3,
-            child: Container(
-              height: 50,
-              alignment: const Alignment(0, 0),
-              color: Colors.orange,
-              child: const Text("xs : 6 \r\nmd : 3"),
-            ),
-          ),
-          ResponsiveGridCol(
-            xs: 6,
-            md: 3,
-            child: Container(
-              height: 50,
-              alignment: const Alignment(0, 0),
-              color: Colors.red,
-              child: const Text("xs : 6 \r\nmd : 3"),
-            ),
-          ),
-          ResponsiveGridCol(
-            xs: 6,
-            md: 3,
-            child: Container(
-              height: 50,
-              alignment: const Alignment(0, 0),
-              color: Colors.blue,
-              child: const Text("xs : 6 \r\nmd : 3"),
-            ),
-          ),
-        ]
+          ".h3": Style(
+            color: Color(0xff99989d),
+            fontSize: FontSize(40)
+          )
+        }
       )
     );
   }

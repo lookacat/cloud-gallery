@@ -17,7 +17,7 @@ class Background extends StatelessWidget {
       height: 200,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/background2.jpg'),
+          image: AssetImage('assets/background.jpg'),
           fit: BoxFit.cover,
         ),
       ),
