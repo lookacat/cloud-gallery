@@ -1,13 +1,9 @@
-import 'dart:convert';
-import 'dart:typed_data';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:home_ui/components/Background.dart';
 import 'package:home_ui/components/iWidget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:webdav_client/webdav_client.dart' as webdav;
-
+import 'package:home_ui/storage/storage_owncloud.dart';
+import 'storage/storage_resource.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -38,17 +34,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   Image myImage = Image.asset("assets/background.jpg");
   @override
   Widget build(BuildContext context) {
-    
-    
     return buildMaterialApp();
   }
 
   Material buildMaterialApp() {
-
     return Material( 
       child: Background(
         child: StaggeredGrid.count(
@@ -99,39 +91,29 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
+  Future<Image> imgTest() async {
+    return Image.asset("assets/background.jpg");
+  }
   Future<void> buttonPressed() async {
-    var client = webdav.newClient(
-      'https://demo.owncloud.com/remote.php/webdav/',
-      user: 'demo',
-      password: 'demo',
+    var ocStorage = StorageOwncloud();
+    ocStorage.initialize();
+    ocStorage.authorize("demo", "demo");
+
+    var resources = await ocStorage.getFiles("/");
+    resources.forEach((Resource file) {
+      // ignore: avoid_print
+      print(file.name);
+    });
+    await ocStorage.webdavClient!.writeFromFile(
+      "C:/Users/paul/Pictures/charttest.jpg",
+      "/charttest.jpg"
     );
-    client.setHeaders({
-      'accept-charset': 'utf-8', 
-      'authorization': "Bearer 0Ep4VNuKHt3XPhTloigX8MYLjc7347Un882Ig32h1ok7CfzUzFXf0EwKk43GE5uc"}
-    );
-
-    // Set the connection server timeout time in milliseconds.
-    client.setConnectTimeout(8000);
-
-    // Set send data timeout time in milliseconds.
-    client.setSendTimeout(8000);
-
-    // Set transfer data time in milliseconds.
-    client.setReceiveTimeout(8000);
-
-    // Test whether the service can connect
-    var list = await client.readDir('/');
-    list.forEach((f) {
-        print('${f.name} ${f.path}');
-      });
-
+    /*
     var content = await client.read('/46-39805972.jpg', onProgress: (c, t) {
-        
     });
     var ucontent = Uint8List.fromList(content);
     var img = Image.memory(ucontent);
     myImage = img;
-    print(img);
+    print(img);*/
   }
 }
