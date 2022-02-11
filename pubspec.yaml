@@ -62,7 +62,7 @@ flutter:
   fonts:
     - family: SanFrancisco
       fonts:
-        - asset: fonts/sf-regular.otf
+        - asset: fonts/sf-regular.ttf
   assets:
     - assets/
 
