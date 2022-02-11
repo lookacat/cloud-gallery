@@ -5,4 +5,5 @@ abstract class StorageProvider {
   Future<void> authorize();
   Future<List<Resource>> getFiles(String directory);
   Future<List<int>> getFileContent(String fileName);
+  Future<void> uploadFile(String localPath, String remotePath);
 }

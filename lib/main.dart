@@ -3,9 +3,6 @@ import 'package:home_ui/components/Background.dart';
 import 'package:home_ui/components/iWidget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_ui/components/image_widget.dart';
-import 'package:openid_client/openid_client.dart';
-import 'package:openid_client/openid_client_io.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'storage/storage_owncloud.dart';
 import 'storage/storage_resource.dart';
@@ -98,15 +95,5 @@ class _MyHomePageState extends State<MyHomePage> {
       // ignore: avoid_print
       print(file.name);
     });
-    /*await ocStorage.webdavClient!.writeFromFile(
-      "C:/Users/paul/Pictures/charttest.jpg",
-      "/files/admin/charttest.jpg"
-    );
-    var content = await client.read('/46-39805972.jpg', onProgress: (c, t) {
-    });
-    var ucontent = Uint8List.fromList(content);
-    var img = Image.memory(ucontent);
-    myImage = img;
-    print(img);*/
   }
 }

@@ -1,12 +1,13 @@
-// ignore: implementation_imports
+// ignore_for_file: library_prefixes
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webdav_client/webdav_client.dart' as webdav;
 import 'package:openid_client/openid_client_io.dart' as openId;
+
 import 'storage_provider.dart';
 import 'storage_resource.dart';
-import 'dart:developer';
 
 class StorageOwncloud implements StorageProvider {
   webdav.Client? webdavClient;
@@ -30,7 +31,11 @@ class StorageOwncloud implements StorageProvider {
       return;
     }
     initialized = true;
-    //? Initialize openId client
+    await initializeOpenIdClient();
+    await initializeWebdavClient();
+  }
+
+  Future<void> initializeOpenIdClient() async {
     var openIdIssuer = await openId.Issuer.discover(Uri.parse(_baseUrl));
     openIdClient = openId.Client(
       openIdIssuer,
@@ -43,8 +48,9 @@ class StorageOwncloud implements StorageProvider {
       port: 4000,
       urlLancher: launchUrl
     );
+  }
 
-    //? Initialize webdav client
+  Future<void> initializeWebdavClient() async {
     clientHeaders = {"accept-charset": "utf-8"};
     webdavClient = webdav.newClient(
       "https://ocis.ocis-web.latest.owncloud.works/remote.php/webdav/",
@@ -80,7 +86,6 @@ class StorageOwncloud implements StorageProvider {
   @override
   Future<List<Resource>> getFiles(String directory) async {
     List<Resource> resources = [];
-    var test = webdavClient;
     var fileList = await webdavClient!.readDir(directory);
     for (var file in fileList) {
       resources.add(Resource(name: file.name, path: file.path));
@@ -91,5 +96,10 @@ class StorageOwncloud implements StorageProvider {
   @override
   Future<List<int>> getFileContent(String fileName) {
     return webdavClient!.read(fileName);
+  }
+
+  @override
+  Future<void> uploadFile(String localPath, String remotePath) async {
+    await webdavClient!.writeFromFile(localPath, remotePath);
   }
 }
