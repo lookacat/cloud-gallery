@@ -1,8 +1,8 @@
 import 'storage_resource.dart';
 
 abstract class StorageProvider {
-  void initialize();
-  void authorize(String userName, String password);
+  Future<void> initialize();
+  Future<void> authorize();
   Future<List<Resource>> getFiles(String directory);
   Future<List<int>> getFileContent(String fileName);
 }

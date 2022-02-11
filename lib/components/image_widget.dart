@@ -22,12 +22,12 @@ class _ImageWidgetState extends State<ImageWidget> {
   }
 
   Future<void> _initState() async {
-    var ocStorage = StorageOwncloud();
+    /*var ocStorage = StorageOwncloud();
     ocStorage.initialize();
-    ocStorage.authorize("admin", "admin");
-    await ocStorage.webdavClient!.writeFromFile(
-        "/Users/ocpaul/Documents/sample-files/image-file.png",
-        "/files/admin/image-file.png");
+    ocStorage.authorize();*/
+    //await ocStorage.webdavClient!.writeFromFile(
+    //    "C:/Users/paul/Pictures/charttest.jpg",
+    //    "/files/admin/image-file.jpg");
     //image = await StorageImage.getStorageImage("/charttest.jpg", ocStorage);*/
     setState(() {
       image = image;
