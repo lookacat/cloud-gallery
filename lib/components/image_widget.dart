@@ -17,17 +17,18 @@ class _ImageWidgetState extends State<ImageWidget> {
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) {
-      //_initState();
+      _initState();
     });
   }
 
   Future<void> _initState() async {
     var ocStorage = StorageOwncloud();
     ocStorage.initialize();
-    ocStorage.authorize("demo", "demo");
-    /*await ocStorage.webdavClient!.writeFromFile(
-        "C:/Users/paul/Pictures/charttest.jpg", "/charttest.jpg");
-    image = await StorageImage.getStorageImage("/charttest.jpg", ocStorage);*/
+    ocStorage.authorize("admin", "admin");
+    await ocStorage.webdavClient!.writeFromFile(
+        "/Users/ocpaul/Documents/sample-files/image-file.png",
+        "/files/admin/image-file.png");
+    //image = await StorageImage.getStorageImage("/charttest.jpg", ocStorage);*/
     setState(() {
       image = image;
     });
