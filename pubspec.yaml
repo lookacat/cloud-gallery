@@ -40,6 +40,7 @@ dependencies:
   webdav_client: ^1.1.2
   openid_client: ^0.4.5
   url_launcher: ^6.0.20
+  file_picker: ^4.3.3
 
 dev_dependencies:
   flutter_test:

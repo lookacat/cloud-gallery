@@ -53,7 +53,7 @@ class StorageOwncloud implements StorageProvider {
   Future<void> initializeWebdavClient() async {
     clientHeaders = {"accept-charset": "utf-8"};
     webdavClient = webdav.newClient(
-      "https://ocis.ocis-web.latest.owncloud.works/remote.php/webdav/",
+      "$_baseUrl/remote.php/webdav/",
       user: "admin",
       password: "admin",
     );
@@ -94,8 +94,8 @@ class StorageOwncloud implements StorageProvider {
   }
 
   @override
-  Future<List<int>> getFileContent(String fileName) {
-    return webdavClient!.read(fileName);
+  Future<List<int>> getFileContent(String fileName) async {
+    return await webdavClient!.read(fileName);
   }
 
   @override
