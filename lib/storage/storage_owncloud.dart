@@ -65,4 +65,9 @@ class StorageOwncloud implements StorageProvider {
     }
     return resources;
   }
+
+  @override
+  Future<List<int>> getFileContent(String fileName) {
+    return webdavClient!.read(fileName);
+  }
 }

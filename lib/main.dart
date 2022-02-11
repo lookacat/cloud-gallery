@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:home_ui/components/Background.dart';
 import 'package:home_ui/components/iWidget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:home_ui/components/image_widget.dart';
 import 'package:home_ui/storage/storage_owncloud.dart';
 import 'storage/storage_resource.dart';
 
@@ -56,19 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () async { await buttonPressed(); },
               )
             ),
-            StaggeredGridTile.count(
+            const StaggeredGridTile.count(
               crossAxisCellCount: 2,
               mainAxisCellCount: 1,
-              child: Container(
-                child: Text("clickMe"),
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  image: DecorationImage(
-                    image: myImage.image, 
-                    fit:BoxFit.cover
-                  ),
-                )
-              )
+              child: ImageWidget()
             ),
             const StaggeredGridTile.count(
               crossAxisCellCount: 1,
@@ -91,9 +83,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Future<Image> imgTest() async {
-    return Image.asset("assets/background.jpg");
-  }
   Future<void> buttonPressed() async {
     var ocStorage = StorageOwncloud();
     ocStorage.initialize();
