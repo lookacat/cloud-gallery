@@ -7,6 +7,7 @@ import 'package:awesome_cloud_gallery/components/image_widget.dart';
 import 'package:awesome_cloud_gallery/components/upload_widget.dart';
 
 import '../config.dart';
+import '../navigator/navigator_store.dart';
 import '../storage/storage.dart';
 import '../storage/storage_resource.dart';
 
@@ -51,7 +52,7 @@ class _ExperimentalPageState extends State<ExperimentalPage> {
             crossAxisCellCount: 2,
             mainAxisCellCount: 2,
             child: ElevatedButton(
-              child: Text("Hello Team"),
+              child: const Text("Hello Team"),
               onPressed: () async {
                 await buttonPressed();
               },
@@ -63,11 +64,15 @@ class _ExperimentalPageState extends State<ExperimentalPage> {
           mainAxisCellCount: 1,
           child: UploadWidget(),
         ),
-        const StaggeredGridTile.count(
-          crossAxisCellCount: 1,
-          mainAxisCellCount: 1,
-          child: iWidget(),
-        ),
+        StaggeredGridTile.count(
+            crossAxisCellCount: 1,
+            mainAxisCellCount: 1,
+            child: ElevatedButton(
+              child: const Text("Gallery"),
+              onPressed: () {
+                NavigatorStore.store.changeRoute("/gallery");
+              },
+            )),
         const StaggeredGridTile.count(
           crossAxisCellCount: 4,
           mainAxisCellCount: 2,
