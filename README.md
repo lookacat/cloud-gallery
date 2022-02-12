@@ -1,7 +1,6 @@
-# home_ui
+# Flutter awesome cloud gallery
 
-A new Flutter project.
-
+Work in progress. Experimenting with flutter openid and webdav.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
