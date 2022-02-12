@@ -1,6 +1,8 @@
 import 'package:awesome_cloud_gallery/navigator/navigator.dart';
 import 'package:flutter/material.dart';
 
+import 'components/primary_menu.dart';
+
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
 
@@ -17,8 +19,17 @@ class _AppPageState extends State<App> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: PageNavigator(
-      initialRoute: "/home",
-    ));
+        body: SafeArea(
+            child: Stack(children: <Widget>[
+      Positioned(
+          child: PageNavigator(
+            initialRoute: "/home",
+          ),
+          bottom: 50,
+          left: 0,
+          right: 0,
+          top: 0),
+      const Positioned(bottom: 0, left: 0, child: PrimaryMenu())
+    ])));
   }
 }
