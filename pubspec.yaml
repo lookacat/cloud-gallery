@@ -37,10 +37,11 @@ dependencies:
   flutter_layout_grid: ^1.0.0
   flutter_staggered_grid_view: ^0.6.0
   flutter_html: ^2.2.1
-  webdav_client: ^1.1.2
+  webdav_client: path ./lib/.packages/webdav_client
   openid_client: ^0.4.5
   url_launcher: ^6.0.20
   file_picker: ^4.3.3
+  path: ^1.8.0
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,4 @@
-import 'dart:typed_data';
 import 'package:flutter/widgets.dart';
-import '../storage/storage_image.dart';
-import '../storage/storage_owncloud.dart';
 
 class ImageWidget extends StatefulWidget {
   const ImageWidget({Key? key}) : super(key: key);
@@ -22,13 +19,6 @@ class _ImageWidgetState extends State<ImageWidget> {
   }
 
   Future<void> _initState() async {
-    /*var ocStorage = StorageOwncloud();
-    ocStorage.initialize();
-    ocStorage.authorize();*/
-    //await ocStorage.webdavClient!.writeFromFile(
-    //    "C:/Users/paul/Pictures/charttest.jpg",
-    //    "/files/admin/image-file.jpg");
-    //image = await StorageImage.getStorageImage("/charttest.jpg", ocStorage);*/
     setState(() {
       image = image;
     });

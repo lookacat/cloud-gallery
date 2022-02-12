@@ -1,6 +1,7 @@
 // ignore_for_file: library_prefixes
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io' as io;
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webdav_client/webdav_client.dart' as webdav;
@@ -18,8 +19,10 @@ class StorageOwncloud implements StorageProvider {
   bool initialized = false;
 
   final String _baseUrl = "https://ocis.ocis-web.latest.owncloud.works";
-  final String _openIdClientId = "xdXOt13JKxym1B1QcEncf2XDkLAexMBFwiT9j6EfhhHFJhs2KM9jbjTmf8JBXE69";
-  final String _openIdClientSecret = "UBntmLjC2yYCeHwsyj73Uwo9TAaecAetRwMw0xYcvNL9yRdLSUi0hUAHfvCHFeFh";
+  final String _openIdClientId =
+      "xdXOt13JKxym1B1QcEncf2XDkLAexMBFwiT9j6EfhhHFJhs2KM9jbjTmf8JBXE69";
+  final String _openIdClientSecret =
+      "UBntmLjC2yYCeHwsyj73Uwo9TAaecAetRwMw0xYcvNL9yRdLSUi0hUAHfvCHFeFh";
   final List<String> _openIdScopes = ["profile", "email"];
 
   openId.Credential? credential;
@@ -37,26 +40,16 @@ class StorageOwncloud implements StorageProvider {
 
   Future<void> initializeOpenIdClient() async {
     var openIdIssuer = await openId.Issuer.discover(Uri.parse(_baseUrl));
-    openIdClient = openId.Client(
-      openIdIssuer,
-      _openIdClientId,
-      clientSecret: _openIdClientSecret
-    );
-    openIdAuthenticator = openId.Authenticator(
-      openIdClient!,
-      scopes: _openIdScopes,
-      port: 4000,
-      urlLancher: launchUrl
-    );
+    openIdClient = openId.Client(openIdIssuer, _openIdClientId,
+        clientSecret: _openIdClientSecret);
+    openIdAuthenticator = openId.Authenticator(openIdClient!,
+        scopes: _openIdScopes, port: 4000, urlLancher: launchUrl);
   }
 
   Future<void> initializeWebdavClient() async {
     clientHeaders = {"accept-charset": "utf-8"};
-    webdavClient = webdav.newClient(
-      "$_baseUrl/remote.php/webdav/",
-      user: "admin",
-      password: "admin",
-    );
+    webdavClient = webdav.newClient("$_baseUrl/remote.php/dav/",
+        debug: true, user: "admin", password: "admin");
     webdavClient!.setConnectTimeout(8000);
     webdavClient!.setSendTimeout(8000);
     webdavClient!.setReceiveTimeout(8000);
@@ -68,7 +61,7 @@ class StorageOwncloud implements StorageProvider {
       log('StorageOwncloud not initialized');
       return;
     }
-    if(credential != null) return;
+    if (credential != null) return;
     credential = await openIdAuthenticator!.authorize();
     var accessToken = (await credential!.getTokenResponse()).accessToken;
     clientHeaders!.addAll({"authorization": "Bearer $accessToken"});
@@ -100,6 +93,10 @@ class StorageOwncloud implements StorageProvider {
 
   @override
   Future<void> uploadFile(String localPath, String remotePath) async {
-    await webdavClient!.writeFromFile(localPath, remotePath);
+    /*print("retert");
+    print(await io.File(localPath).length());
+    return await webdavClient!
+        .write(remotePath, await io.File(localPath).readAsBytes());*/
+    return await webdavClient!.writeFromFile(localPath, remotePath);
   }
 }

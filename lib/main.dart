@@ -3,8 +3,9 @@ import 'package:home_ui/components/Background.dart';
 import 'package:home_ui/components/iWidget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:home_ui/components/image_widget.dart';
+import 'package:home_ui/components/upload_widget.dart';
 
-import 'storage/storage_owncloud.dart';
+import 'storage/storage.dart';
 import 'storage/storage_resource.dart';
 
 void main() async {
@@ -37,60 +38,59 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Image myImage = Image.asset("assets/background.jpg");
+
+  @override
+  void initState() {
+    var storage = Storage();
+    storage.active!.initialize().then((_) => storage.active!.authorize());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return buildMaterialApp();
   }
 
   Material buildMaterialApp() {
-    return Material( 
-      child: Background(
-        child: StaggeredGrid.count(
-          crossAxisCount: 4,
-          mainAxisSpacing: 20,
-          crossAxisSpacing: 20,
-          children: [
-            StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 2,
-              child: ElevatedButton(
-                child: Text("Hello Team"),
-                onPressed: () async { await buttonPressed(); },
-              )
-            ),
-            const StaggeredGridTile.count(
-              crossAxisCellCount: 2,
-              mainAxisCellCount: 1,
-              child: ImageWidget()
-            ),
-            const StaggeredGridTile.count(
-              crossAxisCellCount: 1,
-              mainAxisCellCount: 1,
-              child: iWidget(),
-            ),
-            const StaggeredGridTile.count(
-              crossAxisCellCount: 1,
-              mainAxisCellCount: 1,
-              child: iWidget(),
-            ),
-            const StaggeredGridTile.count(
-              crossAxisCellCount: 4,
-              mainAxisCellCount: 2,
-              child: iWidget(),
-            ),
-          ],
-        )
-      )
-    );
+    return Material(
+        child: Background(
+            child: StaggeredGrid.count(
+      crossAxisCount: 4,
+      mainAxisSpacing: 20,
+      crossAxisSpacing: 20,
+      children: [
+        StaggeredGridTile.count(
+            crossAxisCellCount: 2,
+            mainAxisCellCount: 2,
+            child: ElevatedButton(
+              child: Text("Hello Team"),
+              onPressed: () async {
+                await buttonPressed();
+              },
+            )),
+        const StaggeredGridTile.count(
+            crossAxisCellCount: 2, mainAxisCellCount: 1, child: ImageWidget()),
+        const StaggeredGridTile.count(
+          crossAxisCellCount: 1,
+          mainAxisCellCount: 1,
+          child: UploadWidget(),
+        ),
+        const StaggeredGridTile.count(
+          crossAxisCellCount: 1,
+          mainAxisCellCount: 1,
+          child: iWidget(),
+        ),
+        const StaggeredGridTile.count(
+          crossAxisCellCount: 4,
+          mainAxisCellCount: 2,
+          child: iWidget(),
+        ),
+      ],
+    )));
   }
 
   Future<void> buttonPressed() async {
-    var ocStorage = StorageOwncloud();
-    await ocStorage.initialize();
-    await ocStorage.authorize();
-    print("authorized!");
-
-    var resources = await ocStorage.getFiles("/");
+    var resources = await Storage().active!.getFiles("/files/admin");
     resources.forEach((Resource file) {
       // ignore: avoid_print
       print(file.name);
