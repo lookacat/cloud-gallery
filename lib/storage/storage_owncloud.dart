@@ -1,7 +1,6 @@
 // ignore_for_file: library_prefixes
 import 'dart:async';
 import 'dart:developer';
-import 'dart:io' as io;
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webdav_client/webdav_client.dart' as webdav;
@@ -41,7 +40,9 @@ class StorageOwncloud implements StorageProvider {
         openIdIssuer, config!["authentication"]["client_id"],
         clientSecret: config!["authentication"]["client_secret"]);
     openIdAuthenticator = openId.Authenticator(openIdClient!,
-        scopes: config!["scopes"], port: 4000, urlLancher: launchUrl);
+        scopes: List<String>.from(config!["authentication"]["scopes"]),
+        port: 4000,
+        urlLancher: launchUrl);
   }
 
   Future<void> initializeWebdavClient() async {
