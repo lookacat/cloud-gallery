@@ -1,4 +1,4 @@
-import 'package:awesome_cloud_gallery/pages/experimental.dart';
+import 'package:awesome_cloud_gallery/pages/authentication.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -16,7 +16,7 @@ class CloudGallery extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const ExperimentalPage(title: 'Flutter Demo Home Page'),
+      home: const AuthenticationPage(title: 'Flutter Demo Home Page'),
     );
   }
 }
