@@ -1,11 +1,12 @@
+import 'package:awesome_cloud_gallery/pages/experimental.dart';
 import 'package:flutter/material.dart';
 
+import '../app.dart';
 import '../config.dart';
 import '../storage/storage.dart';
 
 class AuthenticationPage extends StatefulWidget {
-  const AuthenticationPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const AuthenticationPage({Key? key}) : super(key: key);
 
   @override
   State<AuthenticationPage> createState() => _AuthenticationPageState();
@@ -16,11 +17,12 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
 
   @override
   void initState() {
-    Future.microtask(initApplication);
     super.initState();
+    Future.microtask(initApplication);
   }
 
   Future<void> initApplication() async {
+    print("Im called");
     var config = Config();
     await config.loadConfigs();
     var storage = Storage();
@@ -29,6 +31,10 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
     setState(() {
       isAuthenticated = true;
     });
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const App()),
+    );
   }
 
   String displayStateText() {

@@ -11,8 +11,7 @@ import '../storage/storage.dart';
 import '../storage/storage_resource.dart';
 
 class ExperimentalPage extends StatefulWidget {
-  const ExperimentalPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const ExperimentalPage({Key? key}) : super(key: key);
 
   @override
   State<ExperimentalPage> createState() => _ExperimentalPageState();
