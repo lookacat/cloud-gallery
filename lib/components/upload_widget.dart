@@ -2,7 +2,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:home_ui/storage/storage.dart';
+import 'package:awesome_cloud_gallery/storage/storage.dart';
 import 'package:path/path.dart';
 
 class UploadWidget extends StatelessWidget {

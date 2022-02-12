@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:home_ui/components/Background.dart';
-import 'package:home_ui/components/iWidget.dart';
+import 'package:awesome_cloud_gallery/components/Background.dart';
+import 'package:awesome_cloud_gallery/components/iWidget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:home_ui/components/image_widget.dart';
-import 'package:home_ui/components/upload_widget.dart';
+import 'package:awesome_cloud_gallery/components/image_widget.dart';
+import 'package:awesome_cloud_gallery/components/upload_widget.dart';
 
 import 'storage/storage.dart';
 import 'storage/storage_resource.dart';

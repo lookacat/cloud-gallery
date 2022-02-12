@@ -1,4 +1,4 @@
-import 'package:home_ui/storage/storage_owncloud.dart';
+import 'package:awesome_cloud_gallery/storage/storage_owncloud.dart';
 
 import 'storage_provider.dart';
 
