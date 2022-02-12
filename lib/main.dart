@@ -1,3 +1,4 @@
+import 'package:awesome_cloud_gallery/storage/storage_owncloud.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_cloud_gallery/components/Background.dart';
 import 'package:awesome_cloud_gallery/components/iWidget.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:awesome_cloud_gallery/components/image_widget.dart';
 import 'package:awesome_cloud_gallery/components/upload_widget.dart';
 
+import 'config.dart';
 import 'storage/storage.dart';
 import 'storage/storage_resource.dart';
 
@@ -41,9 +43,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    var storage = Storage();
-    storage.active!.initialize().then((_) => storage.active!.authorize());
+    Future.microtask(initApplication);
     super.initState();
+  }
+
+  Future<void> initApplication() async {
+    var config = Config();
+    await config.loadConfigs();
+    var storage = Storage();
+    await storage.active!.initialize();
+    await storage.active!.authorize();
   }
 
   @override
@@ -95,5 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // ignore: avoid_print
       print(file.name);
     });
+    print((StorageOwncloud).toString());
+    print(Config().files![(StorageOwncloud).toString()]["baseUrl"]);
   }
 }
