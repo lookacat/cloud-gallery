@@ -24,7 +24,7 @@ class _AppPageState extends State<App> {
           children: <Widget>[
             Positioned(
               child: PageNavigator(
-                initialRoute: "/home",
+                initialRoute: "/gallery",
               ),
               bottom: 70,
               left: 0,

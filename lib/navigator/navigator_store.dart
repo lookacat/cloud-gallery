@@ -7,7 +7,7 @@ class NavigatorStoreA = NavigatorStoreBase with _$NavigatorStoreA;
 
 abstract class NavigatorStoreBase with Store {
   @observable
-  String route = '/home';
+  String route = '/gallery';
 
   @observable
   Map<String, dynamic>? routeParameters;

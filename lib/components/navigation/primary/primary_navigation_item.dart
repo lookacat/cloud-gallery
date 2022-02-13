@@ -55,8 +55,6 @@ class _PrimaryNavigationItemState extends State<PrimaryNavigationItem> {
     return GestureDetector(
       onTap: onItemTap,
       child: Container(
-        width: 70,
-        height: 70,
         decoration: const BoxDecoration(
           color: Colors.transparent,
         ),

@@ -30,9 +30,9 @@ class _PrimaryNavigationState extends State<PrimaryNavigation> {
       ),
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.6),
+          color: Colors.black.withOpacity(0.3),
           spreadRadius: 3,
-          blurRadius: 8,
+          blurRadius: 18,
           offset: const Offset(0, 3), // changes position of shadow
         ),
       ],
