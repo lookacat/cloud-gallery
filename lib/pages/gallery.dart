@@ -20,10 +20,15 @@ class _GalleryPageState extends State<GalleryPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: Container(
-            decoration: const BoxDecoration(color: Colors.black),
-            child: Center(
-              child: Text("test", style: displayStateTextStyle()),
-            )));
+      child: Container(
+        decoration: const BoxDecoration(color: Colors.black),
+        child: Center(
+          child: Text(
+            "test",
+            style: displayStateTextStyle(),
+          ),
+        ),
+      ),
+    );
   }
 }

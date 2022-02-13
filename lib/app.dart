@@ -26,7 +26,7 @@ class _AppPageState extends State<App> {
               child: PageNavigator(
                 initialRoute: "/home",
               ),
-              bottom: 50,
+              bottom: 70,
               left: 0,
               right: 0,
               top: 0,

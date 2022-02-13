@@ -8,7 +8,7 @@ import 'package:openid_client/openid_client_io.dart' as openId;
 
 import '../config.dart';
 import 'storage_provider.dart';
-import 'storage_resource.dart';
+import '../models/resource.dart';
 
 class StorageOwncloud implements StorageProvider {
   webdav.Client? webdavClient;

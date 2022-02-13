@@ -1,4 +1,4 @@
-import 'storage_resource.dart';
+import '../models/resource.dart';
 
 abstract class StorageProvider {
   Future<void> initialize();

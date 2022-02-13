@@ -48,10 +48,12 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: Container(
-            decoration: const BoxDecoration(color: Colors.black),
-            child: Center(
-              child: Text(displayStateText(), style: displayStateTextStyle()),
-            )));
+      child: Container(
+        decoration: const BoxDecoration(color: Colors.black),
+        child: Center(
+          child: Text(displayStateText(), style: displayStateTextStyle()),
+        ),
+      ),
+    );
   }
 }
