@@ -73,7 +73,7 @@ flutter:
   fonts:
     - family: SanFrancisco
       fonts:
-        - asset: fonts/sf-regular.ttf
+        - asset: fonts/inter-regular.otf
   assets:
     - assets/
     - config/

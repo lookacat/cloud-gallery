@@ -26,7 +26,7 @@ class _PrimaryNavigationState extends State<PrimaryNavigation> {
     return Container(
       height: 70,
       width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(color: Colors.black),
+      decoration: const BoxDecoration(color: Color(0xff1F2123)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -35,6 +35,13 @@ class _PrimaryNavigationState extends State<PrimaryNavigation> {
               title: "Home",
               target: "/home",
               icon: SimpleLineIcons.home,
+            ),
+          ),
+          PrimaryNavigationItem(
+            model: ModelPrimaryNavigationItem(
+              title: "Gallery",
+              target: "/gallery",
+              icon: SimpleLineIcons.social_instagram,
             ),
           ),
         ],
