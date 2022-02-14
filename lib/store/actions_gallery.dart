@@ -9,9 +9,13 @@ class ActionsGallery {
     final List<Image> images = [];
     final List<Resource> resources =
         await Storage().active!.getFiles("/files/admin");
-    var img = await StorageImage.getStorageImage(
-        resources[0].path!, Storage().active!);
-    images.add(img);
+    for (var res in resources) {
+      if (!res.name!.contains(".jpg")) continue;
+      print(res.path);
+      var img =
+          await StorageImage.getStorageImage(res.path!, Storage().active!);
+      images.add(img);
+    }
     return images;
   }
 }

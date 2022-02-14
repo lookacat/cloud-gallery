@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../store/actions_gallery.dart';
 import '../storage/storage_image.dart';
+import '../store/store_gallery.dart';
 
 class GalleryPage extends StatefulWidget {
   const GalleryPage({Key? key}) : super(key: key);
@@ -12,51 +14,46 @@ class GalleryPage extends StatefulWidget {
 }
 
 class _GalleryPageState extends State<GalleryPage> {
-  List<Image>? imageList;
-
   @override
   void initState() {
-    imageList = [];
     super.initState();
   }
 
   Future<void> loadImages() async {
     final imgs = await ActionsGallery.getAllImages();
-    setState(() {
-      imageList!.addAll(imgs);
-    });
-  }
-
-  List<Widget> buildImageTiles() {
-    List<Widget> list = <Widget>[];
-    for (var image in imageList!) {
-      list.add(
-        StaggeredGridTile.count(
-          crossAxisCellCount: 2,
-          mainAxisCellCount: 2,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            clipBehavior: Clip.hardEdge,
-            child: FittedBox(
-              fit: BoxFit.cover,
-              child: image,
-            ),
-          ),
-        ),
-      );
+    for (var img in imgs) {
+      StoreGallery.store.addItem(img);
     }
-    return list;
+    print("added img");
   }
 
   Widget buildGallery() {
-    Future.microtask(ActionsGallery.getAllImages);
-    return StaggeredGrid.count(
+    Future.microtask(loadImages);
+    return Observer(
+      builder: (context) => StaggeredGrid.count(
         crossAxisCount: 4,
         mainAxisSpacing: 20,
         crossAxisSpacing: 20,
-        children: buildImageTiles());
+        children: [
+          for (var img in StoreGallery.store.images)
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 2,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                clipBehavior: Clip.hardEdge,
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: img,
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
   }
 
   @override

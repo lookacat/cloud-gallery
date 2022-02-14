@@ -49,7 +49,7 @@ class StorageOwncloud implements StorageProvider {
     clientHeaders = {"accept-charset": "utf-8"};
     final baseUrl = config!["baseUrl"];
     webdavClient = webdav.newClient("$baseUrl/remote.php/dav/",
-        debug: true, user: "admin", password: "admin");
+        debug: false, user: "admin", password: "admin");
     webdavClient!.setConnectTimeout(80000);
     webdavClient!.setSendTimeout(80000);
     webdavClient!.setReceiveTimeout(80000);
@@ -88,7 +88,12 @@ class StorageOwncloud implements StorageProvider {
 
   @override
   Future<List<int>> getFileContent(String fileName) async {
-    return await webdavClient!.read(fileName);
+    print("Get file $fileName");
+    var c1 = await webdavClient!.read(fileName);
+    print("file recieve done");
+    var len = c1.length;
+    print("len: $len");
+    return c1;
   }
 
   @override

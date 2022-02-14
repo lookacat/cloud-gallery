@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
 
 part 'store_gallery.g.dart';
@@ -11,7 +10,7 @@ abstract class StoreGalleryBase with Store {
   var images = ObservableList<Image>();
 
 // This is action method. You need to use this method to react
-// your UI properly when something changes in your observable list.
+// your UI properly when somethig changes in your observable list.
   @action
   void addItem(Image data) => images.add(data);
 
