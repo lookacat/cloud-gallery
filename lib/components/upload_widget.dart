@@ -27,7 +27,8 @@ class UploadWidget extends StatelessWidget {
     final List<Future<dynamic>> uploads = <Future<dynamic>>[];
     var s = Storage().active;
     for (var item in entities) {
-      await s!.uploadFile(item.path, "/files/admin/" + basename(item.path));
+      uploads
+          .add(s!.uploadFile(item.path, "/files/admin/" + basename(item.path)));
       print(item.path);
       print(basename(item.path));
     }

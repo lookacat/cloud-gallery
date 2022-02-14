@@ -50,9 +50,9 @@ class StorageOwncloud implements StorageProvider {
     final baseUrl = config!["baseUrl"];
     webdavClient = webdav.newClient("$baseUrl/remote.php/dav/",
         debug: true, user: "admin", password: "admin");
-    webdavClient!.setConnectTimeout(8000);
-    webdavClient!.setSendTimeout(8000);
-    webdavClient!.setReceiveTimeout(8000);
+    webdavClient!.setConnectTimeout(80000);
+    webdavClient!.setSendTimeout(80000);
+    webdavClient!.setReceiveTimeout(80000);
   }
 
   @override

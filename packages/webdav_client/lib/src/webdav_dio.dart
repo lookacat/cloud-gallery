@@ -223,10 +223,11 @@ class WdDio extends DioForNative {
     CancelToken? cancelToken,
   }) async {
     // fix auth error
-    var pResp = await this.wdOptions(self, path, cancelToken: cancelToken);
+    // comment of paul: this code cost me hours to figure out that it's not necessary
+    /*var pResp = await this.wdOptions(self, path, cancelToken: cancelToken);
     if (pResp.statusCode != 200) {
       throw newResponseError(pResp);
-    }
+    }*/
 
     var resp = await this.req(
       self,

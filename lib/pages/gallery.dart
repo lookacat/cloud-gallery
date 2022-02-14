@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
+import '../store/actions_gallery.dart';
 import '../storage/storage_image.dart';
 
 class GalleryPage extends StatefulWidget {
@@ -15,8 +16,15 @@ class _GalleryPageState extends State<GalleryPage> {
 
   @override
   void initState() {
-    imageList = [Image.asset("assets/background.jpg")];
+    imageList = [];
     super.initState();
+  }
+
+  Future<void> loadImages() async {
+    final imgs = await ActionsGallery.getAllImages();
+    setState(() {
+      imageList!.addAll(imgs);
+    });
   }
 
   List<Widget> buildImageTiles() {
@@ -43,6 +51,7 @@ class _GalleryPageState extends State<GalleryPage> {
   }
 
   Widget buildGallery() {
+    Future.microtask(ActionsGallery.getAllImages);
     return StaggeredGrid.count(
         crossAxisCount: 4,
         mainAxisSpacing: 20,
