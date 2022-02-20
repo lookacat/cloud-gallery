@@ -1,6 +1,7 @@
 // ignore_for_file: library_prefixes
 import 'dart:async';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webdav_client/webdav_client.dart' as webdav;
@@ -9,6 +10,15 @@ import 'package:openid_client/openid_client_io.dart' as openId;
 import '../config.dart';
 import 'storage_provider.dart';
 import '../models/resource.dart';
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 class StorageOwncloud implements StorageProvider {
   webdav.Client? webdavClient;
@@ -26,6 +36,7 @@ class StorageOwncloud implements StorageProvider {
       log('StorageOwncloud already initialized');
       return;
     }
+    HttpOverrides.global = MyHttpOverrides();
     initialized = true;
     final className = (StorageOwncloud).toString();
     config = Config().files![className];

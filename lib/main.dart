@@ -14,8 +14,12 @@ class CloudGallery extends StatelessWidget {
     return MaterialApp(
       title: 'Cloud Gallery',
       theme: ThemeData(
-        fontFamily: "Inter",
-      ),
+          fontFamily: "Inter",
+          scrollbarTheme: ScrollbarThemeData(
+            thumbColor: MaterialStateProperty.all(
+              const Color(0xff777777),
+            ),
+          )),
       home: const AuthenticationPage(),
     );
   }

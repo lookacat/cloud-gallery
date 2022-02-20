@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:awesome_cloud_gallery/store/store_gallery.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/resource.dart';
@@ -11,10 +14,10 @@ class ActionsGallery {
         await Storage().active!.getFiles("/files/admin");
     for (var res in resources) {
       if (!res.name!.contains(".jpg")) continue;
-      print(res.path);
-      var img =
-          await StorageImage.getStorageImage(res.path!, Storage().active!);
-      images.add(img);
+      log("Loading image");
+      var img = await StorageImage.getStorageImage(
+          res.path! + "?x=1500&y=1500&preview=1&a=1", Storage().active!);
+      StoreGallery.store.addItem(img);
     }
     return images;
   }

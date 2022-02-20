@@ -1,4 +1,5 @@
 {
+  "dart.devToolsPort": 5858,
   // The following will hide the js and map files in the editor
   "files.exclude": {
     "**/generated_plugin_registrant.dart": true,

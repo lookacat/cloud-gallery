@@ -33,7 +33,7 @@ class _GalleryPageState extends State<GalleryPage> {
       builder: (context) => StaggeredGrid.count(
         crossAxisCount: 4,
         mainAxisSpacing: 20,
-        crossAxisSpacing: 20,
+        crossAxisSpacing: 25,
         children: [
           for (var img in StoreGallery.store.images)
             StaggeredGridTile.count(
@@ -41,9 +41,14 @@ class _GalleryPageState extends State<GalleryPage> {
               mainAxisCellCount: 2,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(10),
-                ),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 8,
+                        spreadRadius: 3,
+                        color: Colors.black.withOpacity(0.24),
+                      ),
+                    ]),
                 clipBehavior: Clip.hardEdge,
                 child: FittedBox(
                   fit: BoxFit.cover,
