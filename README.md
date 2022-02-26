@@ -1,4 +1,4 @@
-# Flutter cloud gallery
+# Rainfall cloud client
 
 Work in progress. Experimenting with flutter openid and webdav.
 
