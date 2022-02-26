@@ -1,4 +1,8 @@
-# Rainfall cloud client
+<p align="center">
+  <img width="400" src="assets/icon/rainfall_transparent.png" />
+</p>
+
+# Rainfall Cloud Client
 
 Work in progress. Experimenting with flutter openid and webdav.
 
