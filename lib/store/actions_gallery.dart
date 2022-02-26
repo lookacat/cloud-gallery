@@ -1,4 +1,4 @@
-import 'package:awesome_cloud_gallery/store/store_gallery.dart';
+import '../store/store_gallery.dart';
 import 'package:flutter/widgets.dart';
 
 import '../models/resource.dart';

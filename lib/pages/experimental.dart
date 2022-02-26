@@ -1,10 +1,10 @@
-import 'package:awesome_cloud_gallery/storage/storage_owncloud.dart';
+import '../storage/storage_owncloud.dart';
 import 'package:flutter/material.dart';
-import 'package:awesome_cloud_gallery/components/common/background.dart';
-import 'package:awesome_cloud_gallery/components/common/test_widget.dart';
+import '../components/common/background.dart';
+import '../components/common/test_widget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:awesome_cloud_gallery/components/common/image_widget.dart';
-import 'package:awesome_cloud_gallery/components/common/upload_widget.dart';
+import '../components/common/image_widget.dart';
+import '../components/common/upload_widget.dart';
 
 import '../config.dart';
 import '../navigator/navigator_store.dart';

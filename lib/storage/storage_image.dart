@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/widgets.dart';
-import 'package:awesome_cloud_gallery/storage/storage_provider.dart';
+import '../storage/storage_provider.dart';
 
 class StorageImage {
   static Future<Image> getStorageImage(

@@ -1,6 +1,6 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe
 
-import 'package:awesome_cloud_gallery/models/primary_navigation_item.dart';
+import '../../../models/primary_navigation_item.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 

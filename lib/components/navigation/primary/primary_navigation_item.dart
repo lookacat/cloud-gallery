@@ -1,4 +1,4 @@
-import 'package:awesome_cloud_gallery/models/primary_navigation_item.dart';
+import '../../../models/primary_navigation_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../navigator/navigator_store.dart';

@@ -21,7 +21,7 @@ class Background extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 69, sigmaY: 69),
         child: Container(
-            color: Color.fromRGBO(110, 110, 110, 0.39),
+            color: const Color.fromRGBO(110, 110, 110, 0.39),
             child: Container(child: child)),
       ),
     );

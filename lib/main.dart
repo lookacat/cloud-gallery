@@ -1,4 +1,4 @@
-import 'package:awesome_cloud_gallery/pages/authentication.dart';
+import '../pages/authentication.dart';
 import 'package:flutter/material.dart';
 
 void main() async {

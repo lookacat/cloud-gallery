@@ -1,4 +1,4 @@
-import 'package:awesome_cloud_gallery/pages/experimental.dart';
+import '../pages/experimental.dart';
 import 'package:flutter/material.dart';
 
 import '../app.dart';

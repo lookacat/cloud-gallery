@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors_in_immutables
 
-import 'package:awesome_cloud_gallery/pages/authentication.dart';
-import 'package:awesome_cloud_gallery/pages/gallery.dart';
+import '../pages/gallery.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
