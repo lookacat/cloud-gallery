@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:mobx/mobx.dart';
 import 'navigator.dart';
 
@@ -21,7 +23,7 @@ abstract class NavigatorStoreBase with Store {
     } else {
       routeParameters = <String, dynamic>{};
     }
-    print(route);
+    log("Navigated to route: $route");
   }
 
   @action
