@@ -7,16 +7,19 @@ class StoreGalleryA = StoreGalleryBase with _$StoreGalleryA;
 
 abstract class StoreGalleryBase with Store {
   @observable
-  var images = ObservableList<Image>();
+  ObservableList<Image> images = ObservableList<Image>();
 
-// This is action method. You need to use this method to react
-// your UI properly when somethig changes in your observable list.
+  @observable
+  int crossAxisCount = 1;
+
   @action
   void addItem(Image data) => images.add(data);
 
-// the same for this method but with a different operation.
   @action
   void removeItem(Image data) => images.remove(data);
+
+  @action
+  void setCrossAxisCount(int count) => crossAxisCount = count;
 }
 
 class StoreGallery {

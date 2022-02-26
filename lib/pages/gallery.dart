@@ -3,8 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../store/actions_gallery.dart';
-import '../storage/storage_image.dart';
 import '../store/store_gallery.dart';
+import '../utils/logging.dart';
 
 class GalleryPage extends StatefulWidget {
   const GalleryPage({Key? key}) : super(key: key);
@@ -17,6 +17,7 @@ class _GalleryPageState extends State<GalleryPage> {
   @override
   void initState() {
     super.initState();
+    Future.microtask(loadImages);
   }
 
   Future<void> loadImages() async {
@@ -24,20 +25,19 @@ class _GalleryPageState extends State<GalleryPage> {
     for (var img in imgs) {
       StoreGallery.store.addItem(img);
     }
-    print("added img");
+    logging.i("Refreshed gallery images");
   }
 
   Widget buildGallery() {
-    Future.microtask(loadImages);
     return Observer(
       builder: (context) => StaggeredGrid.count(
-        crossAxisCount: 4,
+        crossAxisCount: StoreGallery.store.crossAxisCount,
         mainAxisSpacing: 20,
         crossAxisSpacing: 25,
         children: [
           for (var img in StoreGallery.store.images)
             StaggeredGridTile.count(
-              crossAxisCellCount: 2,
+              crossAxisCellCount: 1,
               mainAxisCellCount: 2,
               child: Container(
                 decoration: BoxDecoration(
@@ -61,6 +61,7 @@ class _GalleryPageState extends State<GalleryPage> {
     );
   }
 
+  var _v = 1.0;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -71,7 +72,41 @@ class _GalleryPageState extends State<GalleryPage> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           scrollDirection: Axis.vertical,
-          child: buildGallery(),
+          child: Column(
+            children: [
+              Container(
+                height: 50,
+                child: Row(
+                  children: <Widget>[
+                    const Text(
+                      "Gallery",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    Observer(
+                      builder: (context) => Slider(
+                        min: 1,
+                        max: 4,
+                        value: _v,
+                        divisions: 3,
+                        thumbColor: Colors.white,
+                        activeColor: Colors.white,
+                        inactiveColor: Colors.white,
+                        onChanged: (v) {
+                          setState(() {
+                            _v = v;
+                          });
+                          StoreGallery.store.setCrossAxisCount(v.toInt());
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              buildGallery(),
+            ],
+          ),
         ),
       ),
     );

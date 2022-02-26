@@ -2,7 +2,7 @@
 
 import 'package:awesome_cloud_gallery/models/primary_navigation_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:ionicons/ionicons.dart';
 
 import 'primary_navigation_item.dart';
 
@@ -48,14 +48,21 @@ class _PrimaryNavigationState extends State<PrimaryNavigation> {
           model: ModelPrimaryNavigationItem(
             title: "Home",
             target: "/home",
-            icon: SimpleLineIcons.home,
+            icon: Ionicons.home_outline,
           ),
         ),
         PrimaryNavigationItem(
           model: ModelPrimaryNavigationItem(
             title: "Gallery",
             target: "/gallery",
-            icon: SimpleLineIcons.social_instagram,
+            icon: Ionicons.images_outline,
+          ),
+        ),
+        PrimaryNavigationItem(
+          model: ModelPrimaryNavigationItem(
+            title: "File",
+            target: "/file",
+            icon: Ionicons.folder_outline,
           ),
         ),
       ],

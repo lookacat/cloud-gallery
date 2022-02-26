@@ -79,6 +79,14 @@ class StorageOwncloud implements StorageProvider {
     webdavClient!.setHeaders(clientHeaders!);
   }
 
+  Future<void> refresh() async {
+    clientHeaders!.remove("authorization");
+    var accessToken = (await credential!.getTokenResponse()).accessToken;
+    log("New accessToken: $accessToken");
+    clientHeaders!.addAll({"authorization": "Bearer $accessToken"});
+    webdavClient!.setHeaders(clientHeaders!);
+  }
+
   Future<void> launchUrl(String url) async {
     if (await canLaunch(url)) {
       await launch(url, forceWebView: true);
@@ -110,5 +118,11 @@ class StorageOwncloud implements StorageProvider {
   @override
   Future<void> uploadFile(String localPath, String remotePath) async {
     return await webdavClient!.writeFromFile(localPath, remotePath);
+  }
+
+  @override
+  Future<String> getFileEtag(String fileName) async {
+    var response = await webdavClient?.checksum("/files/admin/test.txt");
+    return response!.headers["etag"]![0];
   }
 }

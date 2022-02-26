@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../pages/experimental.dart';
+import '../pages/file.dart';
 
 final GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
 
@@ -34,6 +35,11 @@ class PageNavigator extends StatelessWidget {
                 return PageTransition(
                     type: PageTransitionType.fade,
                     child: const GalleryPage(),
+                    duration: const Duration(milliseconds: 200));
+              case '/file':
+                return PageTransition(
+                    type: PageTransitionType.fade,
+                    child: const FilePage(),
                     duration: const Duration(milliseconds: 200));
               default:
                 return PageTransition(

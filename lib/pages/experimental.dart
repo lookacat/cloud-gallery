@@ -1,10 +1,10 @@
 import 'package:awesome_cloud_gallery/storage/storage_owncloud.dart';
 import 'package:flutter/material.dart';
-import 'package:awesome_cloud_gallery/components/background.dart';
-import 'package:awesome_cloud_gallery/components/test_widget.dart';
+import 'package:awesome_cloud_gallery/components/common/background.dart';
+import 'package:awesome_cloud_gallery/components/common/test_widget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:awesome_cloud_gallery/components/image_widget.dart';
-import 'package:awesome_cloud_gallery/components/upload_widget.dart';
+import 'package:awesome_cloud_gallery/components/common/image_widget.dart';
+import 'package:awesome_cloud_gallery/components/common/upload_widget.dart';
 
 import '../config.dart';
 import '../navigator/navigator_store.dart';
@@ -91,17 +91,7 @@ class _ExperimentalPageState extends State<ExperimentalPage> {
   }
 
   Future<void> buttonPressed() async {
-    var resources = await Storage().active!.getFiles("/files/admin");
-    resources.forEach((Resource file) {
-      // ignore: avoid_print
-      print(file.name);
-    });
-    print((StorageOwncloud).toString());
-    print(Config().files![(StorageOwncloud).toString()]["baseUrl"]);
-    var so = Storage().active! as StorageOwncloud;
-    var nt = await so.credential!.getTokenResponse();
-
-    print(nt.expiresIn);
-    print(nt.expiresAt);
+    var etag = await Storage().active!.getFileEtag("/files/admin/test.txt");
+    print(etag);
   }
 }

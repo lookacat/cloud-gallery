@@ -110,6 +110,10 @@ class Client {
     return removeAll(path, cancelToken);
   }
 
+  Future<Response> checksum(String path) {
+    return c.wdChecksum(this, path);
+  }
+
   /// Remove files
   Future<void> removeAll(String path, [CancelToken? cancelToken]) async {
     var resp = await this.c.wdDelete(this, path, cancelToken: cancelToken);

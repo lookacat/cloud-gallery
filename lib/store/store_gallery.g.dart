@@ -24,6 +24,21 @@ mixin _$StoreGalleryA on StoreGalleryBase, Store {
     });
   }
 
+  final _$crossAxisCountAtom = Atom(name: 'StoreGalleryBase.crossAxisCount');
+
+  @override
+  int get crossAxisCount {
+    _$crossAxisCountAtom.reportRead();
+    return super.crossAxisCount;
+  }
+
+  @override
+  set crossAxisCount(int value) {
+    _$crossAxisCountAtom.reportWrite(value, super.crossAxisCount, () {
+      super.crossAxisCount = value;
+    });
+  }
+
   final _$StoreGalleryBaseActionController =
       ActionController(name: 'StoreGalleryBase');
 
@@ -50,9 +65,21 @@ mixin _$StoreGalleryA on StoreGalleryBase, Store {
   }
 
   @override
+  void setCrossAxisCount(int count) {
+    final _$actionInfo = _$StoreGalleryBaseActionController.startAction(
+        name: 'StoreGalleryBase.setCrossAxisCount');
+    try {
+      return super.setCrossAxisCount(count);
+    } finally {
+      _$StoreGalleryBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-images: ${images}
+images: ${images},
+crossAxisCount: ${crossAxisCount}
     ''';
   }
 }

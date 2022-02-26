@@ -1,0 +1,32 @@
+import 'dart:developer';
+
+import 'package:awesome_cloud_gallery/storage/storage_owncloud.dart';
+import 'package:flutter/material.dart';
+
+import '../storage/storage.dart';
+
+class FilePage extends StatefulWidget {
+  const FilePage({Key? key}) : super(key: key);
+
+  @override
+  State<FilePage> createState() => _FilePageState();
+}
+
+class _FilePageState extends State<FilePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var s = Storage().active as StorageOwncloud;
+    s.refresh();
+    return Material(
+      child: Container(
+        decoration: const BoxDecoration(color: Colors.black),
+        child: const Center(),
+      ),
+    );
+  }
+}

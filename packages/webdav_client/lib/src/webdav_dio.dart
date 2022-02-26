@@ -46,22 +46,21 @@ class WdDio extends DioForNative {
   }
 
   // methods-------------------------
-  Future<Response<T>> req<T>(
-    Client self,
-    String method,
-    String path, {
-    dynamic data,
-    Function(Options)? optionsHandler,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-    CancelToken? cancelToken,
-  }) async {
+  Future<Response<T>> req<T>(Client self, String method, String path,
+      {dynamic data,
+      Function(Options)? optionsHandler,
+      ProgressCallback? onSendProgress,
+      ProgressCallback? onReceiveProgress,
+      CancelToken? cancelToken,
+      dynamic headers}) async {
     // options
     Options options = Options(method: method);
     if (options.headers == null) {
       options.headers = {};
     }
-
+    if (headers != null) {
+      options.headers!.addAll(headers);
+    }
     // 二次处理options
     if (optionsHandler != null) {
       optionsHandler(options);
@@ -173,6 +172,11 @@ class WdDio extends DioForNative {
   Future<Response> wdMkcol(Client self, String path,
       {CancelToken? cancelToken}) {
     return this.req(self, 'MKCOL', path, cancelToken: cancelToken);
+  }
+
+  Future<Response> wdChecksum(Client self, String path) async {
+    return await (this
+        .req(self, 'HEAD', path, headers: {'Want-Digest': 'adler32'}));
   }
 
   /// DELETE
