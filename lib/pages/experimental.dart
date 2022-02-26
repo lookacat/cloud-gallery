@@ -1,15 +1,11 @@
-import '../storage/storage_owncloud.dart';
 import 'package:flutter/material.dart';
 import '../components/common/background.dart';
 import '../components/common/test_widget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../components/common/image_widget.dart';
 import '../components/common/upload_widget.dart';
-
-import '../config.dart';
 import '../navigator/navigator_store.dart';
 import '../storage/storage.dart';
-import '../models/resource.dart';
 
 class ExperimentalPage extends StatefulWidget {
   const ExperimentalPage({Key? key}) : super(key: key);
@@ -23,16 +19,7 @@ class _ExperimentalPageState extends State<ExperimentalPage> {
 
   @override
   void initState() {
-    Future.microtask(initApplication);
     super.initState();
-  }
-
-  Future<void> initApplication() async {
-    var config = Config();
-    await config.loadConfigs();
-    var storage = Storage();
-    await storage.active!.initialize();
-    await storage.active!.authorize();
   }
 
   @override

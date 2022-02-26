@@ -1,3 +1,5 @@
+import 'package:flutter_mobx/flutter_mobx.dart';
+
 import '../../../models/primary_navigation_item.dart';
 import 'package:flutter/material.dart';
 
@@ -31,21 +33,22 @@ class _PrimaryNavigationItemState extends State<PrimaryNavigationItem> {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Icon(
         widget.model.icon,
-        color: Colors.white,
+        color: widget.model.target == NavigatorStore.store.route
+            ? Color.fromARGB(255, 185, 213, 248)
+            : Color(0xff696969),
         size: 25,
       ),
     );
   }
 
   Widget buildLabel() {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      child: Text(
-        widget.model.title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 12,
-        ),
+    return Text(
+      widget.model.title,
+      style: TextStyle(
+        color: widget.model.target == NavigatorStore.store.route
+            ? Colors.white
+            : Color(0xff696969),
+        fontSize: 12,
       ),
     );
   }
@@ -55,14 +58,37 @@ class _PrimaryNavigationItemState extends State<PrimaryNavigationItem> {
     return GestureDetector(
       onTap: onItemTap,
       child: Container(
+        width: 90,
         decoration: const BoxDecoration(
           color: Colors.transparent,
         ),
-        child: Column(
-          children: <Widget>[
-            buildIcon(),
-            buildLabel(),
-          ],
+        child: Observer(
+          builder: (context) => Column(
+            children: <Widget>[
+              buildIcon(),
+              Container(
+                margin: const EdgeInsets.symmetric(
+                  vertical: 10,
+                ),
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                decoration: widget.model.target == NavigatorStore.store.route
+                    ? const BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        gradient: LinearGradient(
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                          colors: [
+                            Color(0xFF0869de),
+                            Color(0xFF4e85c8),
+                          ],
+                        ),
+                      )
+                    : BoxDecoration(),
+                child: buildLabel(),
+              ),
+            ],
+          ),
         ),
       ),
     );

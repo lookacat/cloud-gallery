@@ -22,12 +22,10 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
   }
 
   Future<void> initApplication() async {
-    print("Im called");
     var config = Config();
-    await config.loadConfigs();
     var storage = Storage();
-    await storage.active!.initialize();
-    await storage.active!.authorize();
+    await config.loadConfigs();
+    await storage.initializeAndAuthorize(context);
     setState(() {
       isAuthenticated = true;
     });

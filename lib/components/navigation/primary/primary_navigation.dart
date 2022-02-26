@@ -48,7 +48,7 @@ class _PrimaryNavigationState extends State<PrimaryNavigation> {
           model: ModelPrimaryNavigationItem(
             title: "Home",
             target: "/home",
-            icon: Ionicons.home_outline,
+            icon: Ionicons.home,
           ),
         ),
         PrimaryNavigationItem(

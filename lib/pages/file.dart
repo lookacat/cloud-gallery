@@ -20,8 +20,6 @@ class _FilePageState extends State<FilePage> {
 
   @override
   Widget build(BuildContext context) {
-    var s = Storage().active as StorageOwncloud;
-    s.refresh();
     return Material(
       child: Container(
         decoration: const BoxDecoration(color: Colors.black),
