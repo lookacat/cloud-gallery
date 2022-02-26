@@ -1,4 +1,4 @@
-import 'package:cloud_gallery/models/resource.dart';
+import '../models/resource.dart';
 import 'storage_provider.dart';
 
 class StorageDummy implements StorageProvider {
