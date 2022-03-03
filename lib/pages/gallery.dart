@@ -4,7 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../store/actions_gallery.dart';
 import '../store/store_gallery.dart';
-import '../utils/logging.dart';
+import '../utils/log.dart';
 
 class GalleryPage extends StatefulWidget {
   const GalleryPage({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _GalleryPageState extends State<GalleryPage> {
     for (var img in imgs) {
       StoreGallery.store.addItem(img);
     }
-    logging.i("Refreshed gallery images");
+    log.i("Refreshed gallery images");
   }
 
   Widget buildGallery() {
@@ -67,7 +67,7 @@ class _GalleryPageState extends State<GalleryPage> {
     return Material(
       child: Container(
         decoration: const BoxDecoration(
-          color: Color(0xff191B1C),
+          color: Color(0xff1F2123),
         ),
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),

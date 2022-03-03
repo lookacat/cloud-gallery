@@ -4,6 +4,7 @@ import '../../../models/primary_navigation_item.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
+import '../../../utils/log.dart';
 import 'primary_navigation_item.dart';
 
 class PrimaryNavigation extends StatefulWidget {
@@ -31,9 +32,9 @@ class _PrimaryNavigationState extends State<PrimaryNavigation> {
       boxShadow: [
         BoxShadow(
           color: Colors.black.withOpacity(0.3),
-          spreadRadius: 3,
+          spreadRadius: 4,
           blurRadius: 18,
-          offset: const Offset(0, 3), // changes position of shadow
+          offset: const Offset(0, 0), // changes position of shadow
         ),
       ],
     );
@@ -72,8 +73,9 @@ class _PrimaryNavigationState extends State<PrimaryNavigation> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 70,
+      height: 70 + MediaQuery.of(context).padding.bottom,
       width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).padding.bottom),
       decoration: buildContainerDecoration(),
       child: buildItemRow(),
     );

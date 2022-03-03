@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../models/primary_navigation_item.dart';
@@ -23,6 +24,7 @@ class _PrimaryNavigationItemState extends State<PrimaryNavigationItem> {
   }
 
   void onItemTap() {
+    HapticFeedback.heavyImpact();
     NavigatorStore.store.changeRoute(widget.model.target);
   }
 

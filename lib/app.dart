@@ -2,6 +2,7 @@ import '../navigator/navigator.dart';
 import 'package:flutter/material.dart';
 
 import 'components/navigation/primary/primary_navigation.dart';
+import 'utils/log.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -23,8 +24,9 @@ class _AppPageState extends State<App> {
         decoration: const BoxDecoration(
           color: Color(0xff1F2123),
         ),
-        child: SafeArea(
-          child: Stack(
+        child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+          return Stack(
             children: <Widget>[
               Positioned(
                 child: PageNavigator(
@@ -41,8 +43,8 @@ class _AppPageState extends State<App> {
                 child: PrimaryNavigation(),
               ),
             ],
-          ),
-        ),
+          );
+        }),
       ),
     );
   }

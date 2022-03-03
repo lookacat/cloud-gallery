@@ -1,9 +1,4 @@
-import 'dart:developer';
-
-import '../storage/storage_owncloud.dart';
 import 'package:flutter/material.dart';
-
-import '../storage/storage.dart';
 
 class FilePage extends StatefulWidget {
   const FilePage({Key? key}) : super(key: key);
