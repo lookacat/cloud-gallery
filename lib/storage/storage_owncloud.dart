@@ -96,22 +96,21 @@ class StorageOwncloud implements StorageProvider {
   }
 
   @override
-  Future<List<Resource>> getFiles(String directory) async {
-    List<Resource> resources = [];
+  Future<Map<String, Resource>> getFiles(String directory) async {
+    Map<String, Resource> resources = {};
     var fileList = await webdavClient!.readDir(directory);
     for (var file in fileList) {
-      resources.add(Resource(name: file.name, path: file.path));
+      resources.addAll({
+        file.path.toString(): Resource(name: file.name, path: file.path),
+      });
     }
     return resources;
   }
 
   @override
   Future<List<int>> getFileContent(String fileName) async {
-    print("Get file $fileName");
     var c1 = await webdavClient!.read(fileName);
-    print("file recieve done");
     var len = c1.length;
-    print("len: $len");
     return c1;
   }
 

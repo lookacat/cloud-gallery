@@ -16,17 +16,17 @@ class StorageDummy implements StorageProvider {
   }
 
   @override
-  Future<List<Resource>> getFiles(String directory) async {
-    return <Resource>[
-      Resource(
+  Future<Map<String, Resource>> getFiles(String directory) async {
+    return {
+      "/image.jpg": Resource(
         name: "image.jpg",
         path: "/image.jpg",
       ),
-      Resource(
+      '/file.txt': Resource(
         name: "file.txt",
         path: "/file.txt",
       )
-    ];
+    };
   }
 
   @override

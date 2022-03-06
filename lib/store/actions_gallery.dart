@@ -9,7 +9,7 @@ import 'package:logger/logger.dart';
 class ActionsGallery {
   static Future<List<Image>> getAllImages() async {
     final List<Image> images = [];
-    final List<Resource> resources =
+    /*final List<Resource> resources =
         await Storage().active!.getFiles("/files/admin");
     for (var res in resources) {
       if (!res.name!.contains(".jpg")) continue;
@@ -17,7 +17,7 @@ class ActionsGallery {
       var img = await StorageImage.getStorageImage(
           res.path! + "?x=1500&y=1500&preview=1&a=1", Storage().active!);
       StoreGallery.store.addItem(img);
-    }
+    }*/
     return images;
   }
 }
