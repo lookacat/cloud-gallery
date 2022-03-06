@@ -16,5 +16,5 @@ flutter run
 ## Rebuild stores
 
 ```bash
-flutter pub run build_runner build --delete-conflicting-output
+flutter pub run build_runner build --delete-conflicting-outputs
 ```

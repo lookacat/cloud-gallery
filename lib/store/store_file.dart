@@ -7,10 +7,10 @@ class StoreFileA = StoreFileBase with _$StoreFileA;
 
 abstract class StoreFileBase with Store {
   @observable
-  ObservableList<Image> images = ObservableList<Image>();
+  ObservableMap<String, dynamic> files = ObservableMap.of({});
 
   @action
-  void addItem(Image data) => images.add(data);
+  void setFiles(ObservableMap<String, dynamic> data) => files = data;
 }
 
 class StoreFile {

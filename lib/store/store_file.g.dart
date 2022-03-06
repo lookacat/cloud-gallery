@@ -9,18 +9,18 @@ part of 'store_file.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$StoreFileA on StoreFileBase, Store {
-  final _$imagesAtom = Atom(name: 'StoreFileBase.images');
+  final _$filesAtom = Atom(name: 'StoreFileBase.files');
 
   @override
-  ObservableList<Image> get images {
-    _$imagesAtom.reportRead();
-    return super.images;
+  ObservableMap<String, dynamic> get files {
+    _$filesAtom.reportRead();
+    return super.files;
   }
 
   @override
-  set images(ObservableList<Image> value) {
-    _$imagesAtom.reportWrite(value, super.images, () {
-      super.images = value;
+  set files(ObservableMap<String, dynamic> value) {
+    _$filesAtom.reportWrite(value, super.files, () {
+      super.files = value;
     });
   }
 
@@ -28,11 +28,11 @@ mixin _$StoreFileA on StoreFileBase, Store {
       ActionController(name: 'StoreFileBase');
 
   @override
-  void addItem(Image data) {
+  void setFiles(ObservableMap<String, dynamic> data) {
     final _$actionInfo = _$StoreFileBaseActionController.startAction(
-        name: 'StoreFileBase.addItem');
+        name: 'StoreFileBase.setFiles');
     try {
-      return super.addItem(data);
+      return super.setFiles(data);
     } finally {
       _$StoreFileBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +41,7 @@ mixin _$StoreFileA on StoreFileBase, Store {
   @override
   String toString() {
     return '''
-images: ${images}
+files: ${files}
     ''';
   }
 }
