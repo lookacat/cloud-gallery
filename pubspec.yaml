@@ -82,6 +82,8 @@ flutter:
     - family: Inter
       fonts:
         - asset: fonts/inter-regular.otf
+        - asset: fonts/inter-bold.otf
+          weight: 700
   assets:
     - assets/
     - assets/file_icons/

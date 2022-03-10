@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../components/common/file_extension_icon.dart';
+import '../components/common/files/file_extension_icon.dart';
 import '../store/store_file.dart';
 
 class FilePage extends StatefulWidget {
@@ -31,14 +31,20 @@ class _FilePageState extends State<FilePage> {
       Align(
         alignment: Alignment.centerLeft,
         child: Container(
-          padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
+          padding: const EdgeInsets.only(
+            left: 10,
+            bottom: 10,
+            top: 10,
+          ),
           child: Column(
             children: const [
               Text(
                 'Name',
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Color(0xffdedede),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
                 ),
               )
             ],
@@ -59,7 +65,7 @@ class _FilePageState extends State<FilePage> {
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              padding: const EdgeInsets.only(left: 10, bottom: 2, top: 2),
+              padding: const EdgeInsets.only(left: 10, bottom: 1, top: 1),
               child: Row(
                 children: [
                   FileExtensionIcon(
@@ -68,7 +74,9 @@ class _FilePageState extends State<FilePage> {
                   Text(
                     storeFiles[key]!.name.toString(),
                     textAlign: TextAlign.left,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(
+                      color: Color(0xffdedede),
+                    ),
                   )
                 ],
               ),

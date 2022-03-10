@@ -1,20 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#2980B9;}
-	.st1{fill:#BDC3C7;}
-	.st2{fill:#3498DB;}
-</style>
-<g id="XMLID_1_">
-	<path id="XMLID_3_" class="st0" d="M42.5,106.7C18.9,106.7,0,125.6,0,149.3v298.5c0,23.6,18.9,42.5,42.5,42.5h426.9
-		c23.6,0,42.5-18.9,42.5-42.5V150.1c0-23.6-18.9-42.5-42.5-42.5H42.5V106.7z"/>
-	<path id="XMLID_4_" class="st0" d="M63.8,21.7c-23.6,0-42.5,18.9-42.5,42.5v298.5c0,23.6,18.9,42.5,42.5,42.5h234.7h107.1h42.5
-		c23.6,0,42.5-18.9,42.5-42.5V171.3v-64.6c0-23.6-18.9-42.5-42.5-42.5h-42.5H298.5h-21.3l-63.8-42.5H63.8z"/>
-	<path id="XMLID_5_" class="st1" d="M490.7,298.9V128.8c0-23.6-18.9-42.5-42.5-42.5H213.5H106.3H63.8c-23.6,0-42.5,18.9-42.5,42.5
-		v170.9h469.5V298.9z"/>
-	<path id="XMLID_6_" class="st2" d="M42.5,106.7C18.9,106.7,0,125.6,0,149.3v128.4v21.3v127.6c0,23.6,18.9,42.5,42.5,42.5h426.9
-		c23.6,0,42.5-18.9,42.5-42.5V298.9v-21.3V150.1c0-23.6-18.9-42.5-42.5-42.5H42.5V106.7z"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" version="1.1">
+ <rect style="opacity:0.2" width="50" height="28" x="7" y="28" rx="2.5" ry="2.5"/>
+ <path style="fill:#4877b1" d="M 7,44.5 C 7,45.885 8.115,47 9.5,47 H 54.5 C 55.885,47 57,45.885 57,44.5 V 17.5 C 57,16.115 55.885,15 54.5,15 H 29 V 12.5 C 29,11.115 27.885,10 26.5,10 H 9.5 C 8.115,10 7,11.115 7,12.5"/>
+ <rect style="opacity:0.2" width="50" height="28" x="7" y="26" rx="2.5" ry="2.5"/>
+ <rect style="fill:#e4e4e4" width="44" height="20" x="10" y="18" rx="2.5" ry="2.5"/>
+ <rect style="fill:#5294e2" width="50" height="28" x="7" y="27" rx="2.5" ry="2.5"/>
+ <path style="opacity:0.1;fill:#ffffff" d="M 9.5,10 C 8.115,10 7,11.115 7,12.5 V 13.5 C 7,12.115 8.115,11 9.5,11 H 26.5 C 27.885,11 29,12.115 29,13.5 V 12.5 C 29,11.115 27.885,10 26.5,10 Z M 29,15 V 16 H 54.5 C 55.89,16 57,17.115 57,18.5 V 17.5 C 57,16.115 55.89,15 54.5,15 Z"/>
 </svg>
