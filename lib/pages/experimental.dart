@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:rainfall/store/store_file.dart';
 import '../components/common/upload_widget.dart';
 import '../storage/storage.dart';
 
@@ -42,10 +45,5 @@ class _ExperimentalPageState extends State<ExperimentalPage> {
         ),
       ),
     );
-  }
-
-  Future<void> buttonPressed() async {
-    var etag = await Storage().active!.getFileEtag("/files/admin/test.txt");
-    print(etag);
   }
 }

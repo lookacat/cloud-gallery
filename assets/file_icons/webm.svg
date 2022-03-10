@@ -1,0 +1,13 @@
+<svg 
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ width="96px" height="107px">
+<path fill-rule="evenodd"  fill="rgb(167, 95, 217)"
+ d="M95.769,106.362 L13.999,106.362 L13.999,0.0 L70.216,0.0 L95.769,25.324 L95.769,106.362 Z"/>
+<path fill-rule="evenodd"  fill="rgb(219, 167, 255)"
+ d="M92.275,28.58 L67.999,28.58 L67.999,3.999 L92.275,28.58 Z"/>
+<path fill-rule="evenodd"  fill="rgb(137, 80, 177)"
+ d="M0.0,19.999 C0.0,17.790 1.790,15.999 3.999,15.999 L50.999,15.999 C53.209,15.999 54.999,17.790 54.999,19.999 L54.999,39.999 C54.999,42.209 53.209,43.999 50.999,43.999 L3.999,43.999 C1.790,43.999 0.0,42.209 0.0,39.999 L0.0,19.999 Z"/>
+<text kerning="auto" font-family="DejaVuSans" fill="rgb(0, 0, 0)" font-size="17px" x="3px" y="36.8409999999999px"><tspan font-size="17px" font-family="Roboto" font-weight="bold" fill="#CC98F1">WEBM</tspan></text>
+<text kerning="auto" font-family="DejaVuSans" fill="rgb(0, 0, 0)" font-size="36px" x="32px" y="88px"><tspan font-size="36px" font-family="Objective" fill="#CC98F1">&#62000;</tspan></text>
+</svg>

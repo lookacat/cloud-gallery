@@ -1,7 +1,9 @@
+import 'dart:developer';
+
+import 'package:webdav_client/webdav_client.dart';
+
 import '../store/store_gallery.dart';
 import 'package:flutter/widgets.dart';
-
-import '../models/resource.dart';
 import '../storage/storage.dart';
 import '../storage/storage_image.dart';
 import 'package:logger/logger.dart';
@@ -9,15 +11,19 @@ import 'package:logger/logger.dart';
 class ActionsGallery {
   static Future<List<Image>> getAllImages() async {
     final List<Image> images = [];
-    /*final List<Resource> resources =
+    final Map<String, File> resources =
         await Storage().active!.getFiles("/files/admin");
-    for (var res in resources) {
-      if (!res.name!.contains(".jpg")) continue;
+    for (var key in resources.keys) {
+      var res = resources[key];
+      if (!res!.name!.contains(".jpg") && !res.name!.contains(".png")) {
+        log(res.name!);
+        continue;
+      }
       Logger().i("Loading image");
       var img = await StorageImage.getStorageImage(
           res.path! + "?x=1500&y=1500&preview=1&a=1", Storage().active!);
       StoreGallery.store.addItem(img);
-    }*/
+    }
     return images;
   }
 }

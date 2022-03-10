@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_svg/svg.dart';
 
+import '../components/common/file_extension_icon.dart';
 import '../store/store_file.dart';
 
 class FilePage extends StatefulWidget {
@@ -57,15 +59,16 @@ class _FilePageState extends State<FilePage> {
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
-              padding: const EdgeInsets.only(left: 10, bottom: 10, top: 10),
-              child: Column(
+              padding: const EdgeInsets.only(left: 10, bottom: 2, top: 2),
+              child: Row(
                 children: [
+                  FileExtensionIcon(
+                    resource: storeFiles[key],
+                  ),
                   Text(
                     storeFiles[key]!.name.toString(),
                     textAlign: TextAlign.left,
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
+                    style: const TextStyle(color: Colors.white),
                   )
                 ],
               ),
@@ -82,22 +85,25 @@ class _FilePageState extends State<FilePage> {
     return Material(
       child: Container(
         decoration: const BoxDecoration(color: Color(0xff1F2123)),
-        child: Container(
-          margin: const EdgeInsets.only(top: 50),
-          child: Observer(
-            builder: (context) => Table(
-                columnWidths: const {
-                  0: FlexColumnWidth(1),
-                  1: FlexColumnWidth(9)
-                },
-                border: const TableBorder(
-                    horizontalInside:
-                        BorderSide(width: 1, color: Colors.white)),
-                /*TableBorder.all(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            margin: const EdgeInsets.only(top: 30, bottom: 30),
+            child: Observer(
+              builder: (context) => Table(
+                  columnWidths: const {
+                    0: FlexColumnWidth(0.3),
+                    1: FlexColumnWidth(9)
+                  },
+                  border: const TableBorder(
+                      horizontalInside:
+                          BorderSide(width: 1, color: Color(0xff292929))),
+                  /*TableBorder.all(
                 width: 1.0,
                 color: Colors.white,
               ),*/
-                children: buildFilesTable()),
+                  children: buildFilesTable()),
+            ),
           ),
         ),
       ),

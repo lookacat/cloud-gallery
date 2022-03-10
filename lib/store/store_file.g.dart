@@ -12,30 +12,40 @@ mixin _$StoreFileA on StoreFileBase, Store {
   final _$filesAtom = Atom(name: 'StoreFileBase.files');
 
   @override
-  ObservableMap<String, Resource> get files {
+  ObservableMap<String, dynamic> get files {
     _$filesAtom.reportRead();
     return super.files;
   }
 
   @override
-  set files(ObservableMap<String, Resource> value) {
+  set files(ObservableMap<String, dynamic> value) {
     _$filesAtom.reportWrite(value, super.files, () {
       super.files = value;
     });
   }
 
+  final _$loadAllDirectoriesAsyncAction =
+      AsyncAction('StoreFileBase.loadAllDirectories');
+
+  @override
+  Future<dynamic> loadAllDirectories() {
+    return _$loadAllDirectoriesAsyncAction
+        .run(() => super.loadAllDirectories());
+  }
+
   final _$loadDirectoryAsyncAction = AsyncAction('StoreFileBase.loadDirectory');
 
   @override
-  Future<dynamic> loadDirectory() {
-    return _$loadDirectoryAsyncAction.run(() => super.loadDirectory());
+  Future<dynamic> loadDirectory({String directory = ""}) {
+    return _$loadDirectoryAsyncAction
+        .run(() => super.loadDirectory(directory: directory));
   }
 
   final _$StoreFileBaseActionController =
       ActionController(name: 'StoreFileBase');
 
   @override
-  void setFiles(ObservableMap<String, Resource> data) {
+  void setFiles(ObservableMap<String, File> data) {
     final _$actionInfo = _$StoreFileBaseActionController.startAction(
         name: 'StoreFileBase.setFiles');
     try {

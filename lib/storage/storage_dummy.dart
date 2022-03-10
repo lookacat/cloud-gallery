@@ -1,4 +1,5 @@
-import '../models/resource.dart';
+import 'package:webdav_client/webdav_client.dart';
+
 import 'storage_provider.dart';
 
 class StorageDummy implements StorageProvider {
@@ -16,17 +17,8 @@ class StorageDummy implements StorageProvider {
   }
 
   @override
-  Future<Map<String, Resource>> getFiles(String directory) async {
-    return {
-      "/image.jpg": Resource(
-        name: "image.jpg",
-        path: "/image.jpg",
-      ),
-      '/file.txt': Resource(
-        name: "file.txt",
-        path: "/file.txt",
-      )
-    };
+  Future<Map<String, File>> getFiles(String directory) async {
+    return {"/image.jpg": File(), '/file.txt': File()};
   }
 
   @override

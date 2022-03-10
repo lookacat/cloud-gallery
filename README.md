@@ -6,6 +6,17 @@
 
 Work in progress. Experimenting with flutter openid and webdav.
 
+## Install flutter
+
+MacOS:
+
+1. Download latest https://docs.flutter.dev/get-started/install/macos
+2. Unzip to /Users/{you}/flutter
+3. nano .bash_profile or .zshrc
+4. ```
+   export PATH=$HOME/flutter/bin:$PATH
+   ```
+
 ## Getting Started
 
 ```bash

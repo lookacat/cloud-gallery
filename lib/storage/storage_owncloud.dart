@@ -9,7 +9,6 @@ import 'package:openid_client/openid_client_io.dart' as openId;
 
 import '../config.dart';
 import 'storage_provider.dart';
-import '../models/resource.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -96,12 +95,12 @@ class StorageOwncloud implements StorageProvider {
   }
 
   @override
-  Future<Map<String, Resource>> getFiles(String directory) async {
-    Map<String, Resource> resources = {};
+  Future<Map<String, webdav.File>> getFiles(String directory) async {
+    Map<String, webdav.File> resources = {};
     var fileList = await webdavClient!.readDir(directory);
-    for (var file in fileList) {
+    for (webdav.File file in fileList) {
       resources.addAll({
-        file.path.toString(): Resource(name: file.name, path: file.path),
+        file.path.toString(): file,
       });
     }
     return resources;
