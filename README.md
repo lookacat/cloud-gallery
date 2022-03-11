@@ -1,6 +1,9 @@
 <p align="center">
   <img width="400" src="assets/icon/rainfall_transparent.png" />
 </p>
+<p align="center">
+  <img width="400" src="assets/screenshots/screen1.png" />
+</p>
 
 # Rainfall Cloud Client
 
@@ -22,6 +25,11 @@ MacOS:
 ```bash
 flutter pub get
 flutter run
+```
+
+## Use on Desktop
+```bash
+flutter config --enable-macos-desktop
 ```
 
 ## Rebuild stores
