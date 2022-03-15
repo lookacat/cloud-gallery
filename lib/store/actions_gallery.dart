@@ -1,7 +1,6 @@
 import 'dart:developer';
 
-import 'package:webdav_client/webdav_client.dart';
-
+import '../models/resource.dart';
 import '../store/store_gallery.dart';
 import 'package:flutter/widgets.dart';
 import '../storage/storage.dart';
@@ -11,7 +10,7 @@ import 'package:logger/logger.dart';
 class ActionsGallery {
   static Future<List<Image>> getAllImages() async {
     final List<Image> images = [];
-    final Map<String, File> resources =
+    final Map<String, Resource> resources =
         await Storage().active!.getFiles("/files/admin");
     for (var key in resources.keys) {
       var res = resources[key];

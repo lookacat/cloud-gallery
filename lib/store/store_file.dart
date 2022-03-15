@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:webdav_client/webdav_client.dart';
+import '../models/resource.dart';
 import '../storage/storage.dart';
 import 'package:path/path.dart' as path;
 
@@ -25,7 +26,7 @@ abstract class StoreFileBase with Store {
     var rootPath = "/files/admin";
     var directoryPath = path.join(rootPath, directory);
 
-    Map<String, File> dir = await storage.getFiles(directoryPath);
+    Map<String, Resource> dir = await storage.getFiles(directoryPath);
     for (var key in dir.keys) {
       if (files.containsKey(key)) {
         files.remove(key);

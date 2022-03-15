@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path;
-import 'package:webdav_client/webdav_client.dart';
 
+import '../../../models/resource.dart';
 import '../svg_loader.dart';
 
 class FileExtensionIcon extends StatelessWidget {
-  final File resource;
+  final Resource resource;
   final double size;
+
   const FileExtensionIcon({
     Key? key,
     required this.resource,
